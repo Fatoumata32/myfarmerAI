@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Myfarmerai - Smart Farming Recommendations</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <!--==================== HEADER/ NAVBAR ====================-->
+    <nav class="navbar">
+        <h1><i class="fas fa-leaf"></i> Myfarmerai</h1>
+    </nav>
+
+    <!--==================== HERO SECTION ====================-->
+    <section class="hero">
+        <h2>Smart Farming Recommendations</h2>
+        <p>Get personalized plant recommendations based on your location and conditions</p>
+    </section>
+
+    <!--==================== MAIN CONTENT ====================-->
+    <div class="container">
+        <!--==================== WEB APP FORM ====================-->
+        <form class="input-form" id="recommendationForm">
+            <div class="form-group">
+                <label for="location">Location</label>
+                <input type="text" id="location" placeholder="Enter your city/region..." required>
+            </div>
+
+            <div class="form-group">
+                <label for="soilType">Soil Type</label>
+                <select id="soilType" required>
+                    <option value="">Select soil type...</option>
+                    <option value="clay">Clay</option>
+                    <option value="sandy">Sandy</option>
+                    <option value="loamy">Loamy</option>
+                    <option value="silty">Silty</option>
+                    <option value="peaty">Peaty</option>
+                </select>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="climate">Weather Condition</label>
+                    <select id="climate" required>
+                        <option value="">Select weather...</option>
+                        <option value="sunny">Sunny</option>
+                        <option value="rainy">Rainy</option>
+                        <option value="cloudy">Cloudy</option>
+                        <option value="snowy">Snowy</option>
+                        <option value="humid">Humid</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="temperature">Temperature (°C)</label>
+                    <input type="number" id="temperature" placeholder="Enter temperature..." required>
+                </div>
+            </div>
+
+            <button type="submit" class="submit-btn">
+                <i class="fas fa-search"></i> Get Recommendations
+            </button>
+        </form>
+
+        <!--==================== LOADING SPINNER ====================-->
+        <div class="loader" id="loader">
+            <div class="spinner"></div>
+            <p>Generating recommendations...</p>
+        </div>
+
+        <!--==================== ERROR MESSAGE ====================-->
+        <div class="error-message" id="errorMessage">
+            <i class="fas fa-exclamation-circle"></i>
+            <span id="errorText"></span>
+        </div>
+
+        <!--==================== RESULT SECTION ====================-->
+        <div class="results" id="results">
+            <h3>Your Personalized Recommendations</h3>
+            <div id="recommendationsContainer"></div>
+        </div>
+    </div>
+    <section class="myfarmerai-content">
+        <!--==================== WHAT IS MYFARMERAI ====================-->
+        <div class="myfarmerai-card">
+            <h2 class="myfarmerai-card-title">What is MyFarmerAI?</h2>
+            <p>
+                MyFarmerAI is a revolutionary digital tool designed to simplify farming. It provides tailored
+                recommendations for
+                crops, fertilizers, and cultivation tips based on user inputs like location, weather, and soil type.
+            </p>
+        </div>
+
+        <!--==================== HOW IT WORKS ====================-->
+        <div class="myfarmerai-card">
+            <h2 class="myfarmerai-card-title">How It Works</h2>
+            <ol class="myfarmerai-steps">
+                <li>Enter Your Farm Details</li>
+                <li>AI Generates Personalized Recommendations</li>
+                <li>Implement and Grow</li>
+            </ol>
+        </div>
+
+        <!--==================== KEY BENEFITS ====================-->
+        <div class="myfarmerai-card">
+            <h2 class="myfarmerai-card-title">Key Benefits</h2>
+            <ul class="myfarmerai-benefits">
+                <li>✓ Easy-to-use platform</li>
+                <li>✓ Tailored crop recommendations</li>
+                <li>✓ Sustainable farming practices</li>
+            </ul>
+
+            <button class="myfarmerai-cta-button">
+                <a href="#recommendationForm" class="myfarmerai-cta-button-link">Start Growing Smarter</a>
+            </button>
+
+        </div>
+    </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
