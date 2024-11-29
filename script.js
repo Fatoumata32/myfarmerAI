@@ -38,21 +38,14 @@ function cleanGeminiResponse(text) {
 
 function displayRecommendations(recommendations) {
     const { plants, fertilizers, tips } = recommendations;
-
-    // Create a function to format the recommendations into a list
-    const formatAsList = (items) => {
-        const itemArray = items.split(',').map(item => item.trim()).filter(item => item);
-        return `<ul>${itemArray.map(item => `<li>${item}</li>`).join('')}</ul>`;
-    };
-
     recommendationsContainer.innerHTML = `
         <div class="recommendation-card">
             <h4><i class="fas fa-seedling"></i> Recommended Plants</h4>
-            ${formatAsList(plants)}
+            <p>${plants}</p>
         </div>
         <div class="recommendation-card">
             <h4><i class="fas fa-flask"></i> Fertilizer Recommendations</h4>
-            ${formatAsList(fertilizers)}
+            <p>${fertilizers}</p>
         </div>
         <div class="recommendation-card">
             <h4><i class="fas fa-lightbulb"></i> Cultivation Tips</h4>
