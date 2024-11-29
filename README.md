@@ -180,4 +180,3 @@ Outcome
 The application is accessible online via the load balancer's IP (http://54.227.74.244).
 The load balancer distributes traffic between Web01 and Web02, ensuring reliability and scalability.
 Users experience seamless access regardless of the web server handling the request.
-Let me know if you’d like me to assist with documenting or optimizing anything further! 
