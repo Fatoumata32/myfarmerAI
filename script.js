@@ -36,25 +36,25 @@ function cleanGeminiResponse(text) {
         .trim();
 }
 
-function displayRecommendations(recommendations) {
-    const { plants, fertilizers, tips } = recommendations;
-    recommendationsContainer.innerHTML = `
-        <div class="recommendation-card">
-            <h4><i class="fas fa-seedling"></i> Recommended Plants</h4>
-            <p>${plants}</p>
-        </div>
-        <div class="recommendation-card">
-            <h4><i class="fas fa-flask"></i> Fertilizer Recommendations</h4>
-            <p>${fertilizers}</p>
-        </div>
-        <div class="recommendation-card">
-            <h4><i class="fas fa-lightbulb"></i> Cultivation Tips</h4>
-            <p>${tips}</p>
-        </div>
-    `;
+const displayRecommendations = (recommendations) => {
+    // Destructure recommendations with default empty values
+    const { plants = "No plant recommendations available.", fertilizers = "No fertilizer recommendations available.", tips = "No cultivation tips available." } = recommendations;
+
+    // Function to format items into a list
+    const formatAsList = (items) => {
+        if (!items) return "<ul><li>No items available.</li></ul>"; // Fallback for empty items
+        const itemArray = items.split(',').map(item => item.trim()).filter(item => item);
+        return itemArray.length ? `<ul>${itemArray.map(item => `<li>${item}</li>`).join('')}</ul>` : "<ul><li>No items available.</li></ul>";
+    };
+
+    // Populate the specific sections
+    document.getElementById('plantsList').innerHTML = formatAsList(plants);
+    document.getElementById('fertilizersList').innerHTML = formatAsList(fertilizers);
+    document.getElementById('tipsContent').innerHTML = tips || "No cultivation tips available.";
+
     results.classList.add('show');
     hideLoader();
-}
+};
 
 async function getRecommendations(data) {
     const prompt = `
@@ -125,22 +125,4 @@ form.addEventListener('submit', async (e) => {
 
 // Temperature Input Validation
 const temperatureInput = document.getElementById('temperature');
-temperatureInput.addEventListener('input', (e) => {
-    let value = e.target.value;
-    if (value > 60) e.target.value = 60;  // Max temperature
-    if (value < -40) e.target.value = -40; // Min temperature
-});
-
-// Example for handling the "Start Growing Smarter" button click
-document.addEventListener("DOMContentLoaded", () => {
-  const ctaButton = document.querySelector(".cta-button");
-
-  ctaButton.addEventListener("click", () => {
-    alert("Welcome to smarter farming with MyFarmerAI!");
-  });
-});
-
-document.querySelector('.myfarmerai-cta-button-link').addEventListener('click', (event) => {
-    event.preventDefault(); // Prevent default anchor behavior
-    document.querySelector('#recommendationForm').scrollIntoView({ behavior: 'smooth' });
-});
+temperatureInput
